@@ -4,16 +4,20 @@
 
 ## Excluindo um pod
 
-    kubectl delete pod nome_do_pod
+    kubectl delete pod <nome do pod>
 
 ## Criando um deployment
 
-    kubectl apply -f nome_do_arquivo.yaml 
+    kubectl apply -f <nome do arquivo>.yaml 
 
 ## Exibindo o histórico de um deployment
 
-    kubectl rollout history deployment nome_do_deployment 
+    kubectl rollout history deployment <nome do deployment> 
 
 ## Alterando o Change-cause de um deployment
 
-    kubectl annotate deployment nome_do_deployment kubernetes.io/change-cause="descrição da causa"
+    kubectl annotate deployment <nome do deployment> kubernetes.io/change-cause="<descrição da causa>"
+
+## Voltar um deployment para uma revisão específica
+
+    kubectl rollout undo deployment <nome do deployment> --to-revision=<versão a ser retornada>
