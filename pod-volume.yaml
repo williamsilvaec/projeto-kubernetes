@@ -1,0 +1,21 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: pod-volume
+spec:
+  containers:
+    - name: nginx-container
+      image: nginx:latest
+      volumeMounts:
+        - mountPath: /volume-dentro-do-container
+          name: primeiro-volume
+    - name: jenkins-container
+      image: jenkins:alpine
+      volumeMounts:
+        - mountPath: /volume-dentro-do-container
+          name: primeiro-volume
+  volumes: # é uma especificação do pod e não do container, pois o volume é dependente do pod e independente do container
+    - name: primeiro-volume
+      hostPath:
+        path: /mnt/c/Users/william/primeiro-volume
+        type: Directory
